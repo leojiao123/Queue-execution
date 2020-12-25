@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CallQueue</string>
+    <string name="test">test</string>
+    <string name="app_test_login">模拟登录</string>
+    <string name="app_clear_all">重置</string>
+    <string name="app_test_vip">vip测试</string>
+    <string name="app_vip">充值VIP</string>
 </resources>
