@@ -48,17 +48,25 @@ class SingleCall {
         return this
     }
 
+    fun doCall() {
+        doCall(tag)
+    }
+
+    /**
+     * 对指定tag 的callUnit 进行执行，没有执行完拦截器的继续执行拦截器的操作
+     */
     fun doCall(tag: String) {
         val callUnit = callUnitMap[tag] ?: return
-
+        // 最后一个拦截器没有通过的话直接返回
         if (callUnit.lastValid != null && !callUnit.lastValid!!.check()) {
             return
         }
         if (callUnit.validQueue.size == 0) {
-            callUnit.action?.doCall()
+            callUnit.action?.doCall(true, "")
             clear(tag)
             return
         }
+        // 正常来对拦截器进行校验,
         val valid = callUnit.validQueue.poll()
         callUnit.lastValid = valid
         valid?.doValid()

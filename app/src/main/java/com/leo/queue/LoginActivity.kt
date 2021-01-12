@@ -21,15 +21,12 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         btn_test.setOnClickListener {
             SingleCall.INSTANCE.tag("VIP").addAction(object : Action {
-                override fun doCall() {
+                override fun doCall(result: Boolean, reason: String) {
                     println("vip测试")
                     Toast.makeText(this@LoginActivity, "vip测试", Toast.LENGTH_LONG).show()
                     finish()
                     login = true
                     SingleCall.INSTANCE.doCall("LOGIN")
-                }
-
-                override fun doFailCall() {
                 }
 
             }).addValid(VipValid(this)).doCall("VIP")
@@ -38,14 +35,10 @@ class LoginActivity : AppCompatActivity() {
         btn_test_vip.visibility = View.GONE
         btn_test_vip.setOnClickListener {
             SingleCall.INSTANCE.tag("VIP").addAction(object : Action {
-                override fun doCall() {
+                override fun doCall(result: Boolean, reason: String) {
                     Toast.makeText(this@LoginActivity, "vip测试", Toast.LENGTH_SHORT).show()
                     SingleCall.INSTANCE.doCall("LOGIN")
                 }
-
-                override fun doFailCall() {
-                }
-
             }).addValid(VipValid(this)).doCall("VIP")
 
         }

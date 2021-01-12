@@ -23,7 +23,7 @@ class ActionManager {
         actions.clear()
         callUnit.check()
         if (callUnit.validQueue.size == 0) {
-            callUnit.action?.doCall()
+            callUnit.action?.doCall(true, "")
         } else {
             actions.push(callUnit)
             val valid = callUnit.validQueue.peek()
@@ -31,5 +31,4 @@ class ActionManager {
             valid?.doValid()
         }
     }
-
 }

@@ -7,7 +7,6 @@ package com.leo.call
  * @email hqb1992522@qq.com
  */
 interface Valid {
-
     fun check(): Boolean
     fun doValid()
     fun validTag(): String

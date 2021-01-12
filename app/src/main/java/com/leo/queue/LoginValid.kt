@@ -20,7 +20,7 @@ class LoginValid(context: Context) : Valid {
     }
 
     override fun doValid() {
-        var intent = Intent(context, LoginActivity::class.java)
+        val intent = Intent(context, LoginActivity::class.java)
         context?.let { startActivity(it, intent, null) }
     }
 

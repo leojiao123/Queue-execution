@@ -7,6 +7,5 @@ package com.leo.call
  * @email hqb1992522@qq.com
  */
 public interface Action {
-    fun doCall()
-    fun doFailCall()
+    fun doCall(result: Boolean, reason: String)
 }

@@ -14,15 +14,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         btn_test.setOnClickListener {
             SingleCall.INSTANCE.tag("LOGIN").addAction(object : Action {
-                override fun doCall() {
+                override fun doCall(result: Boolean, reason: String) {
                     Handler().postDelayed({
                         Toast.makeText(this@MainActivity, "登录成功后的操作", Toast.LENGTH_SHORT).show()
                     }, 2000)
                 }
-
-                override fun doFailCall() {
-                }
-            }).addValid(LoginValid(this)).doCall("LOGIN")
+            }).addValid(LoginValid(this)).doCall()
         }
         btn_reset.setOnClickListener {
             LoginActivity.login = false
